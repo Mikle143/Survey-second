@@ -12,13 +12,11 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 
-        <mapping class="ru.vdovmb.entity.AnswerEntity"/>
-        <mapping class="ru.vdovmb.entity.QuestionEntity"/>
-        <mapping class="ru.vdovmb.entity.SurveyEntity"/>
-        <mapping class="ru.vdovmb.entity.SurveyQuestionAnswerEntity"/>
-        <mapping class="ru.vdovmb.entity.SurveyQuestionEntity"/>
-        <mapping class="ru.vdovmb.entity.AnswerTextEntity"/>
-        <mapping class="ru.vdovmb.entity.UserEntity"/>
+        <mapping class="ru.vdovmb.entity.Answer"/>
+        <mapping class="ru.vdovmb.entity.Question"/>
+        <mapping class="ru.vdovmb.entity.Survey"/>
+        <mapping class="ru.vdovmb.entity.AnswerText"/>
+        <mapping class="ru.vdovmb.entity.User"/>
 
     </session-factory>
 </hibernate-configuration>
