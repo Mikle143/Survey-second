@@ -25,17 +25,12 @@ import java.util.Set;
 @Entity
 @Table(name = "answer_text")
 public class AnswerText {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
     private String answerText;
-
-    // Связь с ответами
-    @OneToMany(mappedBy = "answerText", cascade = CascadeType.ALL)
-    private List<Answer> answers;
 }
 
 

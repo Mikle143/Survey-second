@@ -28,7 +28,6 @@ import java.util.Set;
 @Entity
 @Table(name = "question")
 public class Question {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -36,14 +35,9 @@ public class Question {
     @Column(nullable = false)
     private String questionText;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "integer default 1")
     private Integer answersNumber;
 
-    // Связь с опросами
-    @ManyToMany(mappedBy = "questions")
-    private List<Survey> surveys;
-
-    // Связь с ответами
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-    private List<Answer> answers;
+    @OneToMany(mappedBy = "question")
+    private List<SurveyQuestion> surveyQuestions;
 }

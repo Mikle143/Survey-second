@@ -24,23 +24,11 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    // Связь с пользователем
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // Связь с опросом
     @ManyToOne
-    @JoinColumn(name = "survey_id", nullable = false)
-    private Survey survey;
-
-    // Связь с вопросом
-    @ManyToOne
-    @JoinColumn(name = "question_id", nullable = false)
-    private Question question;
-
-    // Связь с текстом ответа
-    @ManyToOne
-    @JoinColumn(name = "answer_text_id", nullable = false)
-    private AnswerText answerText;
+    @JoinColumn(name = "survey_question_answer_text_id", nullable = false)
+    private SurveyQuestionAnswerText surveyQuestionAnswerText;
 }
