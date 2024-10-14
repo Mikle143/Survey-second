@@ -5,16 +5,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.testcontainers.containers.PostgreSQLContainer;
 
-
 @UtilityClass
 public class HibernateTestUtil {
 
     private static final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:16");
+
     static {
-          postgreSQLContainer.start();
+        postgreSQLContainer.start();
     }
 
-    public static SessionFactory bildSessionFactory() {
+    public static SessionFactory buildSessionFactory() {
         Configuration configuration = HibernateUtil.buildConfiguration();
         configuration.setProperty("hibernate.connection.url", postgreSQLContainer.getJdbcUrl());
         configuration.setProperty("hibernate.connection.username", postgreSQLContainer.getUsername());
