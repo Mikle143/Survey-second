@@ -15,7 +15,7 @@ public class UserCrudTest {
 
     @BeforeAll
     static void init() {
-        sessionFactory = HibernateTestUtil.bildSessionFactory();
+        sessionFactory = HibernateTestUtil.buildSessionFactory();
     }
 
     @AfterAll
@@ -31,7 +31,7 @@ public class UserCrudTest {
                     .name("Test")
                     .login("test")
                     .password("test")
-                    .role(Role.GUEST.toString())
+                    .role(Role.GUEST)
                     .build();
             session.persist(user);
 
@@ -51,7 +51,7 @@ public class UserCrudTest {
                     .name("Test")
                     .login("test")
                     .password("test")
-                    .role(Role.GUEST.toString())
+                    .role(Role.GUEST)
                     .build();
             session.persist(user);
 
@@ -72,7 +72,7 @@ public class UserCrudTest {
                     .name("Test")
                     .login("test")
                     .password("test")
-                    .role(Role.GUEST.toString())
+                    .role(Role.GUEST)
                     .build();
             session.persist(user);
 
@@ -88,8 +88,6 @@ public class UserCrudTest {
         }
     }
 
-
-
     @Test
     void UserDelete() {
         try (var session = sessionFactory.openSession()) {
@@ -98,7 +96,7 @@ public class UserCrudTest {
                     .name("Test")
                     .login("test")
                     .password("test")
-                    .role(Role.GUEST.toString())
+                    .role(Role.GUEST)
                     .build();
             session.persist(user);
             session.remove(user);
