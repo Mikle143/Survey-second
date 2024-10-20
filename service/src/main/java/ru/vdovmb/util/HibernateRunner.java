@@ -4,7 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import ru.vdovmb.dao.UserRepositiry;
+import ru.vdovmb.dao.UserRepository;
 
 import java.lang.reflect.Proxy;
 import java.sql.SQLException;
@@ -19,8 +19,8 @@ public class HibernateRunner {
                     (proxy, method, args1) -> method.invoke(sessionFactory.getCurrentSession(), args1));
             session.beginTransaction();
 
-            var userRepositiry = new UserRepositiry(session);
-            userRepositiry.findById(1).ifPresent(System.out::println);
+            var userRepository = new UserRepository(session);
+            userRepository.findById(1).ifPresent(System.out::println);
             session.getTransaction().commit();
         }
     }

@@ -1,7 +1,6 @@
 package ru.vdovmb;
 
 import com.querydsl.jpa.impl.JPAQuery;
-import org.assertj.core.api.Assertions;
 import org.hibernate.HibernateException;
 import org.junit.jupiter.api.Test;
 import ru.vdovmb.entity.QSurvey;
@@ -9,6 +8,7 @@ import ru.vdovmb.entity.Role;
 import ru.vdovmb.entity.Survey;
 import ru.vdovmb.entity.User;
 import ru.vdovmb.util.HibernateTestUtil;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
@@ -74,8 +74,8 @@ class HibernateRunnerTest {
                     .where(QSurvey.survey.name.like("%a%"))
                     .fetch();
 
-            Assertions.assertThat(surveys).hasSize(3);
-            Assertions.assertThat(surveys.stream().map(Survey::getName)).contains("1a", "2a", "3a");
+            assertThat(surveys).hasSize(3);
+            assertThat(surveys.stream().map(Survey::getName)).contains("1a", "2a", "3a");
 
             session.getTransaction().rollback();
 

@@ -9,16 +9,17 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class QPredicate {
 
-    private List<Predicate> predicates = new ArrayList<Predicate>();
+    private List<com.querydsl.core.types.Predicate> predicates = new ArrayList<com.querydsl.core.types.Predicate>();
 
     public static QPredicate builder() {
         return new QPredicate();
     }
 
-    public <T> QPredicate add(T object, Function<T, Predicate> function) {
+    public <T> QPredicate add(T object, Function<T, com.querydsl.core.types.Predicate> function) {
         if (object != null) {
             predicates.add(function.apply(object));
         }
@@ -26,7 +27,7 @@ public class QPredicate {
     }
 
     public com.querydsl.core.types.Predicate buildAnd() {
-        return ExpressionUtils.allOf((com.querydsl.core.types.Predicate) predicates);
+        return ExpressionUtils.allOf( predicates);
     }
 
     public com.querydsl.core.types.Predicate buildOr() {

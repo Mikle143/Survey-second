@@ -1,4 +1,4 @@
-package ru.vdovmb;
+package ru.vdovmb.dao;
 
 import lombok.Cleanup;
 import org.hibernate.Session;
@@ -6,33 +6,29 @@ import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import ru.vdovmb.dao.AnswerFilterDao;
 import ru.vdovmb.dto.AnswerFilter;
 import ru.vdovmb.entity.Answer;
 import ru.vdovmb.entity.User;
 import ru.vdovmb.util.HibernateTestUtil;
-import ru.vdovmb.util.TestDataImporter;
 
 import java.util.List;
 
 import static java.util.stream.Collectors.*;
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.TestInstance.Lifecycle.*;
 
-@TestInstance(PER_CLASS)
-class AnswerRepositiryTest {
 
-    private final SessionFactory sessionFactory = HibernateTestUtil.buildSessionFactory();
-    private final AnswerFilterDao answerDao = AnswerFilterDao.getInstance();
+class AnswerRepositoryTest {
+
+    private static final SessionFactory sessionFactory = HibernateTestUtil.buildSessionFactory();
+    private final AnswerFilterDao answerFilterDao = AnswerFilterDao.getInstance();
 
     @BeforeAll
-    public void initDb() {
+    public static void initDb() {
         TestDataImporter.importData(sessionFactory);
     }
 
     @AfterAll
-    public void finish() {
+    public static void finish() {
         sessionFactory.close();
     }
 
@@ -41,7 +37,7 @@ class AnswerRepositiryTest {
         @Cleanup Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        List<Answer> results = answerDao.findAll(session);
+        List<Answer> results = answerFilterDao.findAll(session);
         assertThat(results).hasSize(5);
 
         List<User> users = results.stream().map(Answer::getUser).collect(toList());
@@ -58,10 +54,10 @@ class AnswerRepositiryTest {
         AnswerFilter filter = AnswerFilter.builder()
                 .surveyName("Survey1")
                 .questionText("1Question")
-//                .answerText("aText1")
+             //   .answerText("aText1")
                 .build();
 
-        List<Answer> results = answerDao.findAnswer(session, filter);
+        List<Answer> results = answerFilterDao.findAnswer(session, filter);
         assertThat(results).hasSize(2);
 
 

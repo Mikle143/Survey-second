@@ -3,9 +3,7 @@ package ru.vdovmb.dao;
 import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import jakarta.persistence.EntityManager;
-import lombok.Cleanup;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.SessionFactory;
 import ru.vdovmb.entity.BaseEntity;
 
 import java.io.Serializable;
@@ -13,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
-public abstract class RepositiryBase<K extends Serializable, E extends BaseEntity<K>> implements Repositiry<K, E> {
+public abstract class RepositoryBase<K extends Serializable, E extends BaseEntity<K>> implements Repository<K, E> {
 
     private final Class<E> entityClass;
     private final EntityManager entityManager;

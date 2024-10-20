@@ -8,5 +8,5 @@ import lombok.Value;
 public class AnswerFilter {
     String surveyName;
     String questionText;
-//    String answerText;
+    String answerText;
 }

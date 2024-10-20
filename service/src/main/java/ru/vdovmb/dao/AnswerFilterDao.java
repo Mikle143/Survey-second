@@ -29,20 +29,20 @@ public class AnswerFilterDao {
 
     public List<Answer> findAnswer(Session session, AnswerFilter answerFilter) {
 
-        Predicate Predicate = QPredicate.builder()
+
+        Predicate predicate = QPredicate.builder()
                 // Фильтрация по названию опроса
                 .add(answerFilter.getSurveyName(), name -> (java.util.function.Predicate) QAnswer.answer.surveyQuestionAnswerText.surveyQuestion.survey.name.eq(name))
                 // Фильтрация по тексту вопроса
                 .add(answerFilter.getQuestionText(), text -> (java.util.function.Predicate) QAnswer.answer.surveyQuestionAnswerText.surveyQuestion.question.questionText.eq(text))
                 // Фильтрация по тексту ответа
-                //.add(answerFilter.getAnswerText(), text -> (java.util.function.Predicate) QAnswer.answer.surveyQuestionAnswerText.answerText.answerText.eq(text))
+                //.add(answerFilter.getAnswerText(), text -> QAnswer.answer.surveyQuestionAnswerText.answerText.eq(text))
                 .buildAnd();
 
         return new JPAQuery<>(session)
                 .select(QAnswer.answer)
                 .from(QAnswer.answer)
-                .where(Predicate)
+                .where(predicate)
                 .fetch();
     }
-
 }
