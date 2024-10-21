@@ -5,8 +5,8 @@ import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import ru.vdovmb.entity.Role;
-import ru.vdovmb.entity.User;
+import ru.vdovmb.spring.database.entity.Role;
+import ru.vdovmb.spring.database.entity.User;
 import ru.vdovmb.util.HibernateTestUtil;
 
 public class UserCrudTest {
