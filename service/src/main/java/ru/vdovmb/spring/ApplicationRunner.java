@@ -1,23 +1,17 @@
 package ru.vdovmb.spring;
 
-import ru.vdovmb.spring.config.ApplicationConfiguration;
-import ru.vdovmb.spring.database.entity.Survey;
-import ru.vdovmb.spring.database.pool.ConnectionPool;
-import ru.vdovmb.spring.database.repository.CrudRepository;
-import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ru.vdovmb.spring.database.repository.SurveyRepository;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import ru.vdovmb.spring.config.DatabaseProperties;
 
-import java.io.Serializable;
-
+@SpringBootApplication
+@ConfigurationPropertiesScan
 public class ApplicationRunner {
 
     public static void main(String[] args) {
-
-        var context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
-        context.getBean(SurveyRepository.class);
-        SurveyRepository surveyRepository = context.getBean(SurveyRepository.class);
-        surveyRepository.save(new Survey());
-
+        var context = SpringApplication.run(ApplicationRunner.class, args);
+        System.out.println(context.getBeanDefinitionCount());
+        System.out.println(context.getBean(DatabaseProperties.class));
     }
 }

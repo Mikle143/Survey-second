@@ -32,4 +32,8 @@ public class Survey implements BaseEntity<Integer> {
     // Связь с сущностью "survey_question"
     @OneToMany(mappedBy = "survey")
     private List<SurveyQuestion> surveyQuestions;
+
+    public Survey(Integer surveyId) {
+        Survey survey = new Survey();
+    }
 }

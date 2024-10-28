@@ -10,4 +10,5 @@ public class SurveyRepository extends RepositoryBase<Integer, Survey> {
     public SurveyRepository(EntityManager entityManager) {
         super(Survey.class, entityManager);
     }
+
 }

@@ -32,4 +32,14 @@ public class Answer implements BaseEntity<Integer> {
     @ManyToOne
     @JoinColumn(name = "survey_question_answer_text_id", nullable = false)
     private SurveyQuestionAnswerText surveyQuestionAnswerText;
+
+    public void setUser(User user) {
+        this.user = user;
+        user.getAnswers().add(this);
+    }
+
+    public void setSurveyQuestionAnswerText(SurveyQuestionAnswerText surveyQuestionAnswerText) {
+        this.surveyQuestionAnswerText = surveyQuestionAnswerText;
+        surveyQuestionAnswerText.getAnswers().add(this);
+    }
 }

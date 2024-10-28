@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.function.Function;
 
 @Repository
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor
 public class QPredicate {
 
     private List<com.querydsl.core.types.Predicate> predicates = new ArrayList<com.querydsl.core.types.Predicate>();
