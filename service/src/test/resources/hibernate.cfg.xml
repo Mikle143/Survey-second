@@ -10,13 +10,13 @@
         <property name="format_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">create</property>
 
-        <mapping class="ru.vdovmb.entity.Answer"/>
-        <mapping class="ru.vdovmb.entity.Question"/>
-        <mapping class="ru.vdovmb.entity.Survey"/>
-        <mapping class="ru.vdovmb.entity.AnswerText"/>
-        <mapping class="ru.vdovmb.entity.User"/>
-        <mapping class="ru.vdovmb.entity.SurveyQuestion"/>
-        <mapping class="ru.vdovmb.entity.SurveyQuestionAnswerText"/>
+        <mapping class="ru.vdovmb.spring.database.entity.Answer"/>
+        <mapping class="ru.vdovmb.spring.database.entity.Question"/>
+        <mapping class="ru.vdovmb.spring.database.entity.Survey"/>
+        <mapping class="ru.vdovmb.spring.database.entity.AnswerText"/>
+        <mapping class="ru.vdovmb.spring.database.entity.User"/>
+        <mapping class="ru.vdovmb.spring.database.entity.SurveyQuestion"/>
+        <mapping class="ru.vdovmb.spring.database.entity.SurveyQuestionAnswerText"/>
 
 
     </session-factory>
