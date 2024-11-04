@@ -38,5 +38,16 @@ public class SurveyQuestion implements BaseEntity<Integer> {
 
     @OneToMany(mappedBy = "surveyQuestion")
     private List<SurveyQuestionAnswerText> surveyQuestionAnswerTexts;
+
+    public void setSurvey(Survey survey) {
+        this.survey = survey;
+        this.survey.getSurveyQuestions().add(this);
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+        this.question.getSurveyQuestions().add(this);
+    }
+
 }
 

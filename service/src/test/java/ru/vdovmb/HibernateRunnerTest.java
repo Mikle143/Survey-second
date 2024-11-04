@@ -3,7 +3,7 @@ package ru.vdovmb;
 import com.querydsl.jpa.impl.JPAQuery;
 import org.hibernate.HibernateException;
 import org.junit.jupiter.api.Test;
-import ru.vdovmb.entity.QSurvey;
+import ru.vdovmb.spring.database.entity.QSurvey;
 import ru.vdovmb.spring.database.entity.Role;
 import ru.vdovmb.spring.database.entity.Survey;
 import ru.vdovmb.spring.database.entity.User;

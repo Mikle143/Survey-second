@@ -13,7 +13,7 @@ import ru.vdovmb.spring.database.entity.QAnswer;
 import java.util.List;
 
 @Repository
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor
 public class AnswerFilterDao {
 
     private static final AnswerFilterDao INSTANCE = new AnswerFilterDao();
