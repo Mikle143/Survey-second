@@ -1,14 +1,14 @@
 package ru.vdovmb.spring.database.repository;
 
-import jakarta.persistence.EntityManager;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import ru.vdovmb.spring.database.entity.Survey;
+import java.util.Optional;
 
-@Repository
-public class SurveyRepository extends RepositoryBase<Integer, Survey> {
+public interface SurveyRepository extends JpaRepository<Survey, Integer> {
 
-    public SurveyRepository(EntityManager entityManager) {
-        super(Survey.class, entityManager);
-    }
+    @Query("SELECT s FROM Survey s LEFT JOIN FETCH s.surveyQuestions WHERE s.name = :name")
+    Optional<Survey> findByNameWithQuestions(@Param("name") String name);
 
 }

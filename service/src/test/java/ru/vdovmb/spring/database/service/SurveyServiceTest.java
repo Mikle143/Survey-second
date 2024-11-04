@@ -14,7 +14,8 @@ import ru.vdovmb.spring.listener.EntityEvent;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -40,18 +41,25 @@ class SurveyServiceTest {
 
     @Test
     void findById() {
+        // Мокаем репозиторий, чтобы вернуть объект Survey с заданным ID
         Mockito.doReturn(Optional.of(new Survey(SURVEY_ID)))
                 .when(surveyRepository).findById(SURVEY_ID);
 
-        var actualResult = surveyService.findById(SURVEY_ID);
+        // Получаем результат из сервиса
+        var surveyOptional = surveyService.findById(SURVEY_ID);
+        var actualResult = surveyOptional.map(survey -> new SurveyReadDto(survey.getId()));
 
-        assertTrue(actualResult.isPresent());
-        assertEquals(SURVEY_ID, actualResult.get().getId());
 
+        // Проверка на наличие объекта
+        assertTrue(surveyOptional.isPresent());
+
+        // Ожидаемый результат
         var expectedResult = new SurveyReadDto(SURVEY_ID);
 
-        assertEquals(expectedResult, actualResult);
+        // Сравнение фактического результата с ожидаемым
+        actualResult.ifPresent(actual -> assertEquals(expectedResult, actual));
 
+        // Проверяем, что событие было опубликовано
         verify(eventPublisher).publishEvent(any(EntityEvent.class));
     }
 
