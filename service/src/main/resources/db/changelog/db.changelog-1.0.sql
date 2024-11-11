@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset vdovmb:1
+--changeSet vdovmb:1
 CREATE TABLE public.survey
 (
     id   SERIAL PRIMARY KEY,
