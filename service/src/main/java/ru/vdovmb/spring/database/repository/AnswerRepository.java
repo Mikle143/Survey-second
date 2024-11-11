@@ -1,13 +1,11 @@
 package ru.vdovmb.spring.database.repository;
 
-import jakarta.persistence.EntityManager;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.vdovmb.spring.database.entity.Answer;
 
 @Repository
-public class AnswerRepository extends RepositoryBase<Integer, Answer> {
+public interface AnswerRepository extends JpaRepository<Answer, Integer> {
 
-    public AnswerRepository(EntityManager entityManager) {
-        super(Answer.class, entityManager);
-    }
+
 }

@@ -1,22 +1,25 @@
 package ru.vdovmb.spring.database.service;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.vdovmb.spring.database.entity.Survey;
+import ru.vdovmb.spring.database.repository.SurveyQuestionRepository;
 import ru.vdovmb.spring.database.repository.SurveyRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 @Transactional
 public class SurveyService {
 
     private final SurveyRepository surveyRepository;
+    private final ApplicationEventPublisher eventPublisher;
+    private final SurveyQuestionRepository surveyQuestionRepository;
 
-    public SurveyService(SurveyRepository surveyRepository) {
-        this.surveyRepository = surveyRepository;
-    }
 
     // Создание нового опроса
     public Survey createSurvey(Survey survey) {
@@ -33,14 +36,8 @@ public class SurveyService {
         return surveyRepository.findAll();
     }
 
-    // Обновление опроса
-    public Survey updateSurvey(Survey survey) {
-        surveyRepository.update(survey);
-        return survey;
-    }
-
     // Удаление опроса по ID
-    public void deleteSurvey(Integer id) {
-        surveyRepository.delete(id);
+    public void deleteSurvey(Survey survey) {
+        surveyRepository.delete(survey);
     }
 }
