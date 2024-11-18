@@ -3,11 +3,11 @@ package ru.vdovmb.spring.mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.vdovmb.spring.dto.UserReadDto;
-import ru.vdovmb.spring.entity.User;
+import ru.vdovmb.spring.database.entity.User;
 
 @Component
 @RequiredArgsConstructor
-public class UserReadMapper implements Mapper<User, UserReadDto> {
+public class UserReadMapper implements Mapper <User, UserReadDto> {
 
     @Override
     public UserReadDto map(User obj) {

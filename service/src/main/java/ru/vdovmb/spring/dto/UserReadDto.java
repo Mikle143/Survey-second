@@ -1,7 +1,7 @@
 package ru.vdovmb.spring.dto;
 
 import lombok.Value;
-import ru.vdovmb.spring.entity.Role;
+import ru.vdovmb.spring.database.entity.Role;
 
 @Value
 public class UserReadDto {

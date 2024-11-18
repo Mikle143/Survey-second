@@ -7,10 +7,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
-import ru.vdovmb.spring.SurveyService;
 import ru.vdovmb.spring.dto.SurveyReadDto;
-import ru.vdovmb.spring.entity.Survey;
-import ru.vdovmb.spring.repository.SurveyRepository;
+import ru.vdovmb.spring.database.entity.Survey;
+import ru.vdovmb.spring.database.repository.SurveyRepository;
 import ru.vdovmb.spring.listener.EntityEvent;
 
 import java.util.Optional;

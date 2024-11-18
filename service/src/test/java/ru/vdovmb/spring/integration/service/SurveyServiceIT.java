@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.vdovmb.spring.ApplicationRunner;
 import ru.vdovmb.spring.dto.SurveyReadDto;
-import ru.vdovmb.spring.repository.SurveyRepository;
-import ru.vdovmb.spring.SurveyService;
+import ru.vdovmb.spring.database.repository.SurveyRepository;
+import ru.vdovmb.spring.service.SurveyService;
 
 import static org.junit.jupiter.api.Assertions.*;
 

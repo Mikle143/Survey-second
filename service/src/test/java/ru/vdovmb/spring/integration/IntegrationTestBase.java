@@ -13,7 +13,7 @@ import ru.vdovmb.spring.integration.annotation.IT;
 })
 public abstract class IntegrationTestBase {
 
-    private static final PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:14.1");
+    private static final PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:17.0");
 
     @BeforeAll
     static void runContainer() {

@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.server.ResponseStatusException;
+import ru.vdovmb.spring.service.UserService;
+import ru.vdovmb.spring.database.entity.Role;
 import ru.vdovmb.spring.dto.UserCreateEditDto;
-import ru.vdovmb.spring.UserService;
 
 @Controller
 @RequestMapping("/users")
@@ -32,11 +33,13 @@ public class UserController {
     public String findById(@PathVariable("id") Integer id, Model model) {
 
         return userService.findById(id)
-                .map(user->{
+                .map(user -> {
                     model.addAttribute("user", user);
+                    model.addAttribute("roles", Role.values());
+                    model.addAttribute("login", user.getLogin());
                     return "user/user";
                 })
-                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
@@ -50,8 +53,8 @@ public class UserController {
     @PostMapping("/{id}/update")
     public String update(@PathVariable("id") Integer id, @ModelAttribute UserCreateEditDto user) {
         return userService.update(id, user)
-                .map(it-> "redirect:/users/{id}")
-                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .map(it -> "redirect:/users/{id}")
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
     }
 

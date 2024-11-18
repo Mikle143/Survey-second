@@ -4,9 +4,9 @@ import com.querydsl.jpa.impl.JPAQuery;
 import org.hibernate.HibernateException;
 import org.junit.jupiter.api.Test;
 import ru.vdovmb.spring.entity.QSurvey;
-import ru.vdovmb.spring.entity.Role;
-import ru.vdovmb.spring.entity.Survey;
-import ru.vdovmb.spring.entity.User;
+import ru.vdovmb.spring.database.entity.Role;
+import ru.vdovmb.spring.database.entity.Survey;
+import ru.vdovmb.spring.database.entity.User;
 import ru.vdovmb.util.HibernateTestUtil;
 import static org.assertj.core.api.Assertions.assertThat;
 
