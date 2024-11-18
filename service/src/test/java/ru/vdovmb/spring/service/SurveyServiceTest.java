@@ -1,4 +1,4 @@
-package ru.vdovmb.spring.database.service;
+package ru.vdovmb.spring.service;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
-import ru.vdovmb.spring.database.dto.SurveyReadDto;
+import ru.vdovmb.spring.dto.SurveyReadDto;
 import ru.vdovmb.spring.database.entity.Survey;
 import ru.vdovmb.spring.database.repository.SurveyRepository;
 import ru.vdovmb.spring.listener.EntityEvent;

@@ -13,6 +13,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
+import org.hibernate.envers.RelationTargetAuditMode;
 
 import java.util.List;
 
@@ -22,7 +25,8 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "users")
-public class User implements BaseEntity<Integer> {
+@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+public class User extends AuditingEntity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,10 +41,16 @@ public class User implements BaseEntity<Integer> {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private String image;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
 
+    @NotAudited
     @OneToMany(mappedBy = "user")
     private List<Answer> answers;
+
+
 }

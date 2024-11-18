@@ -1,4 +1,4 @@
-package ru.vdovmb.spring.database.service;
+package ru.vdovmb.spring.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;

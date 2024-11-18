@@ -1,4 +1,4 @@
-package ru.vdovmb.spring.database.dto;
+package ru.vdovmb.spring.dto;
 
 import lombok.Builder;
 import lombok.Value;

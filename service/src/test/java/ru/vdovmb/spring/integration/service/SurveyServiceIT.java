@@ -1,12 +1,12 @@
-package ru.vdovmb.integration;
+package ru.vdovmb.spring.integration.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.vdovmb.spring.ApplicationRunner;
-import ru.vdovmb.spring.database.dto.SurveyReadDto;
+import ru.vdovmb.spring.dto.SurveyReadDto;
 import ru.vdovmb.spring.database.repository.SurveyRepository;
-import ru.vdovmb.spring.database.service.SurveyService;
+import ru.vdovmb.spring.service.SurveyService;
 
 import static org.junit.jupiter.api.Assertions.*;
 

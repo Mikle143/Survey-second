@@ -5,9 +5,18 @@ spring:
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
   jpa:
     properties.hibernate:
       show_sql: true
       format_sql: true
       hbm2ddl.auto: validate
+
+#server:
+#  port: 8081
+
+
 
